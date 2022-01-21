@@ -1,0 +1,24 @@
+{
+  "name": "arasemr12.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "devDependencies": {
+    "tailwindcss": "^3.0.15"
+  },
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./tailwind.css -o ./style.css --minify",
+    "tailwind:watch": "npx tailwindcss -i ./tailwind.css -o ./style.css --watch --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arasemr12/arasemr12.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arasemr12/arasemr12.github.io/issues"
+  },
+  "homepage": "https://github.com/arasemr12/arasemr12.github.io#readme"
+}
