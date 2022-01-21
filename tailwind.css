@@ -31,4 +31,9 @@
     .progress{
         @apply block bg-gray-200 h-1 w-1 rounded-lg relative;
     }
+
+    .hr{
+        @apply block bg-gray-400 w-2/3 rounded-lg relative;
+        height:1px;
+    }
 }
