@@ -29,7 +29,11 @@
     }
 
     .progress{
-        @apply block bg-gray-200 h-1 w-1 rounded-lg relative;
+        @apply block bg-gray-500 h-1 w-full rounded-lg relative;
+    }
+
+    .progress2{
+        @apply block bg-gray-100 h-1 w-1 rounded-lg relative;
     }
 
     .hr{

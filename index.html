@@ -86,23 +86,23 @@
     <div class="flex justify-center mb-8 w-full">
       <span class="hr"></span>
     </div>
-    <div class="w-full flex flex-col justify-center text-center" id="spo">
-      <h3 class="text-2xl font-semibold uppercase mb-4">Currently listening</h3>
-      <div class="flex flex-row justify-center">
+    <div class="w-full flex flex-col justify-center" id="spo">
+      <h3 class="text-2xl font-semibold uppercase mb-4 text-center">Currently listening</h3>
+      <div class="w-full flex justify-center">
         <div>
           <img width="64" height="64" class="rounded-lg" src="" id="spoimg">
         </div>
         <div class="flex flex-col justify-between">
-          <div class="block float-left">
+          <div class="flex flex-col">
             <span class="block" id="sposong"></span>
             <span class="block" id="spoartist"></span>
             <span class="block" id="spoalbum"></span>
           </div>
-        </div>
-      </div>
-      <div class="w-full flex justify-center">
-        <div class="w-1/4 flex flex-row justify-start text-center">
-          <span class="progress" id="progress"></span>
+          <div class="flex">
+            <span class="progress">
+              <span class="progress2" id="progress"></span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -124,7 +124,6 @@
             let totalLength = data.spotify.timestamps.end - data.spotify.timestamps.start;
             let diff = Date.now() - data.spotify.timestamps.start;
             let playedPercentage = diff / totalLength * 100;
-            console.log(playedPercentage)
             spoimg.src = data.spotify.album_art_url;
             sposong.innerText = data.spotify.song;
             spoartist.innerText = data.spotify.artist;
