@@ -33,7 +33,7 @@
     }
 
     .hr{
-        @apply block bg-gray-400 w-2/3 rounded-lg relative;
+        @apply block bg-gray-400 w-full lg:w-2/3 rounded-lg relative;
         height:1px;
     }
 }
