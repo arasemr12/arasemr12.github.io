@@ -55,7 +55,7 @@
   <div class="py-8 px-8 flex flex-col">
     <div class="w-full text-center mb-8">
       <div class="mb-4">
-        <img src="https://emraharas.xyz/profil.gif" class="rounded-full logo mx-auto" alt="">
+        <img src="https://emraharas.xyz/profil.gif" class="rounded-full logo mx-auto" alt="" id="logo">
       </div>
       <div class="mb-4">
         <h1 class="mb-4 text-4xl font-bold">Arasemr12</h1>
@@ -109,6 +109,7 @@
   </div>
   <script>
     function spo(){
+      let logo = document.getElementById('logo');
       let spoimg = document.getElementById('spoimg');
       let sposong = document.getElementById('sposong');
       let spo = document.getElementById('spo');
@@ -120,6 +121,7 @@
         .then((res) => res.json())
         .then((data) => {
           data = data.data;
+          logo.src = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png`
           if(data.listening_to_spotify){
             let totalLength = data.spotify.timestamps.end - data.spotify.timestamps.start;
             let diff = Date.now() - data.spotify.timestamps.start;
