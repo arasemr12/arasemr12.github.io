@@ -102,7 +102,7 @@
             <span class="block" id="spoartist"></span>
             <span class="block" id="spoalbum"></span>
           </div>
-          <div class="flex">
+          <div class="flex" id="promain">
             <span class="progress">
               <span class="progress2" id="progress"></span>
             </span>
@@ -120,6 +120,8 @@
       let spoartist = document.getElementById('spoartist');
       let spoalbum = document.getElementById('spoalbum');
       let progress = document.getElementById('progress');
+      let promain = document.getElementById('promain');
+      
 
       fetch('https://api.lanyard.rest/v1/users/441221465019514881')
         .then((res) => res.json())
@@ -134,14 +136,14 @@
             sposong.innerText = data.spotify.song;
             spoartist.innerText = data.spotify.artist;
             spoalbum.innerText = data.spotify.album;
+            promain.style.display = "block";
             progress.style.width = playedPercentage + '%';
           }else{
-            spo.innerHTML = `
-              <h3 class="text-2xl font-semibold uppercase mb-4 text-center">Currently listening</h3>
-              <div class="w-full flex justify-center text-center">
-                <h5 class="text-center">NOT LISTENING</h5>
-              </div>
-            `
+            spoimg.src = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png`
+            sposong.innerText = "Not listening";
+            spoartist.innerText = data.discord_user.username;
+            spoalbum.innerText = "";
+            promain.style.display = "none";
           }
         })
     }
