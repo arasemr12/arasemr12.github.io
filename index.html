@@ -106,6 +106,10 @@
             <span class="progress">
               <span class="progress2" id="progress"></span>
             </span>
+            <div>
+              <span class="float-left" id="current">1:10</span>
+              <span class="float-right" id="total">2:00</span>
+            </div>
           </div>
         </div>
       </div>
@@ -121,7 +125,14 @@
       let spoalbum = document.getElementById('spoalbum');
       let progress = document.getElementById('progress');
       let promain = document.getElementById('promain');
-      
+      let total = document.getElementById('total');
+      let current = document.getElementById('current');
+
+      function millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      }
 
       fetch('https://api.lanyard.rest/v1/users/441221465019514881')
         .then((res) => res.json())
@@ -132,6 +143,8 @@
             let totalLength = data.spotify.timestamps.end - data.spotify.timestamps.start;
             let diff = Date.now() - data.spotify.timestamps.start;
             let playedPercentage = diff / totalLength * 100;
+            current.innerText = millisToMinutesAndSeconds(diff);
+            total.innerText = millisToMinutesAndSeconds(totalLength)
             spoimg.src = data.spotify.album_art_url;
             sposong.innerText = data.spotify.song;
             spoartist.innerText = data.spotify.artist;
