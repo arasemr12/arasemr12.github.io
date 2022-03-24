@@ -55,19 +55,33 @@
   <div class="py-8 px-8 flex flex-col">
     <div class="w-full text-center mb-8">
       <div class="mb-4">
-        <img src="https://emraharas.xyz/profil.gif" width="128" class="rounded-full logo mx-auto" alt="" id="logo">
+        <img draggable="false" src="" width="128" height="128" onload="imgloaded()" class="rounded-full logo mx-auto animate-pulse bg-gray-500" alt="" id="logo">
       </div>
       <div class="mb-4">
         <h1 class="mb-4 text-4xl font-bold">Arasemr12</h1>
         <p>Hello, I'm Emrah, I'm interested in coding. Technologies I use:</p>
-        <div class="technologies">
-          <i class="fab fa-node-js fa-2x"></i>
-          <i class="fab fa-python fa-2x"></i>
-          <i class="fab fa-html5 fa-2x"></i>
-          <i class="fab fa-css3 fa-2x"></i>
-          <i class="fab fa-js-square fa-2x"></i>
-          <i class="fab fa-bootstrap fa-2x"></i>
-          <i class="fab fa-vuejs fa-2x"></i>
+        <div class="technologies flex-wrap flex flex-row items-center justify-center w-full">
+          <i class="fab fa-node-js fa-2x flex flex-col-reverse">
+            <a class="text-xs hidden">Node.js</a>
+          </i>
+          <i class="fab fa-python fa-2x flex flex-col-reverse">
+            <a class="text-xs hidden">Python</a>
+          </i>
+          <i class="fab fa-html5 fa-2x flex flex-col-reverse">
+            <a class="text-xs hidden">Html</a>
+          </i>
+          <i class="fab fa-css3 fa-2x flex flex-col-reverse">
+            <a class="text-xs hidden">Css</a>
+          </i>
+          <i class="fab fa-js-square fa-2x flex flex-col-reverse">
+            <a class="text-xs hidden">Javascript</a>
+          </i>
+          <i class="fab fa-bootstrap fa-2x flex flex-col-reverse">
+            <a class="text-xs hidden">Bootstrap</a>
+          </i>
+          <i class="fab fa-vuejs fa-2x flex flex-col-reverse">
+            <a class="text-xs hidden">Vue&nuxt.js</a>
+          </i>
         </div>
       </div>
       <div class="flex justify-center mb-6 w-full">
@@ -94,7 +108,7 @@
       <h3 class="text-2xl font-semibold uppercase mb-4 text-center">Currently listening</h3>
       <div class="w-full flex justify-center">
         <div>
-          <img width="64" height="64" class="rounded-lg" src="" id="spoimg">
+          <img draggable="false" width="64" height="64" class="rounded-lg bg-gray-500" src="" id="spoimg">
         </div>
         <div class="flex flex-col justify-between">
           <div class="flex flex-col">
@@ -116,8 +130,13 @@
     </div>
   </div>
   <script>
+    let logo = document.getElementById('logo');
+
+    function imgloaded(){
+      logo.classList.remove("animate-pulse")
+    }
+
     function spo(){
-      let logo = document.getElementById('logo');
       let spoimg = document.getElementById('spoimg');
       let sposong = document.getElementById('sposong');
       let spo = document.getElementById('spo');

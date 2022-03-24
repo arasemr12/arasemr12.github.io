@@ -12,6 +12,14 @@
         @apply py-4 px-4 text-gray-300 hover:text-gray-100 hover:-translate-y-1 duration-500;
     }
 
+    .technologies i a{
+        @apply duration-300 font-serif bg-gray-800 py-1 px-1 rounded-full; 
+    }
+
+    .technologies i:hover a{
+        @apply block -translate-y-1;
+    }
+
     .socials a{
         @apply py-4 px-4 text-gray-300 hover:text-gray-100 duration-500;
     }
