@@ -8,7 +8,7 @@
         @apply bg-gray-900 text-white transition p-0 m-0;
     }
 
-    .technologies i{
+    /*.technologies i{
         @apply py-4 px-4 text-gray-300 hover:text-gray-100 hover:-translate-y-1 duration-500;
     }
 
@@ -18,7 +18,7 @@
 
     .technologies i:hover a{
         @apply block -translate-y-1;
-    }
+    }*/
 
     .socials a{
         @apply py-4 px-4 text-gray-300 hover:text-gray-100 duration-500;
@@ -47,5 +47,25 @@
     .hr{
         @apply block bg-gray-400 w-full lg:w-2/3 rounded-lg relative;
         height:1px;
+    }
+
+    .icon{
+        @apply flex justify-center;
+    }
+
+    .icon a{
+        @apply bg-gray-800 py-1 px-1 rounded-full -translate-y-2;
+    }
+
+    .icon i{
+        @apply py-4 px-4 text-gray-300 duration-500;
+    }
+
+    .icon:hover i{
+        @apply text-gray-100 -translate-y-1 z-50;
+    }
+
+    .icon:hover a{
+        @apply block z-40;
     }
 }
