@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full flex flex-col items-center justify-center">
-    <div class="bg-red-600 w-full rounded-full p-4 top-0 absolute opacity-0 transition duration-1000" id="msg">Discord username copied!</div>
-    <div class="w-full lg:w-2/3 bg-gray-800 p-6 rounded-lg flex flex-col items-center mt-24">
+    <div class="bg-red-600 w-full rounded-full p-4 top-0 mb-8 absolute opacity-0 transition duration-1000" id="msg">Discord username copied!</div>
+    <div class="w-full lg:w-2/3 bg-gray-800 p-6 rounded-lg flex flex-col items-center mt-24 top-0 h-full">
       <div class="w-full">
         <img draggable="false" src="" class="rounded-full mx-auto mb-4 profile bg-gray-500 animate-pulse" @load="imgloaded('logo')" width="128" height="128" alt="" id="logo"/>
         <h1 class="text-4xl font-bold text-center mb-4" id="username">arasemr12</h1>
@@ -44,7 +44,7 @@
       <span class="hr"></span>
       <div class="w-full">
         <h2 class="text-2xl font-bold text-center mb-4">Contact me</h2>
-        <div class="flex flex-row space-x-4 justify-center mt-4 items-center flex-wrap">
+        <div class="flex flex-row items-center justify-center mt-4 flex-wrap">
           <div class="icon">
             <span class="text-xs rounded-full">Discord</span>
             <a id="discord" @click.prevent="dc()" class="cursor-pointer"><i class="fab fa-discord fa-2x z-20"></i></a>
@@ -102,6 +102,7 @@ export default {
       if (!navigator.clipboard) {
         let textArea = document.createElement("textarea");
         textArea.value = "arasemr12#9891";
+        textArea.style.opacity = "0";
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();

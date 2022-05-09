@@ -3,9 +3,15 @@ export default {
   head: {
     title: 'arasemr12',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
+      prefix: "og: https://ogp.me/ns#"
     },
     meta: [
+      { property: 'og:title', content: 'arasemr12' },
+      { property: 'og:description', content: "Hello, I'm Emrah, I'm interested in coding." },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://emraharas.xyz/' },
+      { property: 'og:image', content: 'https://emraharas.xyz/emraharas.png' },
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
