@@ -42,12 +42,12 @@ export default {
   ],
 
   googleAnalytics: {
-    id: "G-PNZ9C6R1H4", // Use as fallback if no runtime config is provided
+    id: "UA-3794023023", // Use as fallback if no runtime config is provided
   },
 
   publicRuntimeConfig: {
     googleAnalytics: {
-      id: "G-PNZ9C6R1H4"
+      id: "UA-3794023023"
     }
   },
 
