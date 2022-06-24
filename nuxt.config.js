@@ -38,7 +38,18 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxt/postcss8',
+    '@nuxtjs/google-analytics'
   ],
+
+  googleAnalytics: {
+    id: "G-PNZ9C6R1H4", // Use as fallback if no runtime config is provided
+  },
+
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: "G-PNZ9C6R1H4"
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
