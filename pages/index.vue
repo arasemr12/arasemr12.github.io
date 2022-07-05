@@ -155,7 +155,7 @@ export default {
       .then((res) => res.json())
       .then((data) => {
         data = data.data;
-        logo.src = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png`;
+        logo.src = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.gif`;
         username.innerText = data.discord_user.username;
         if(data.listening_to_spotify){
           let totalLength = data.spotify.timestamps.end - data.spotify.timestamps.start;
