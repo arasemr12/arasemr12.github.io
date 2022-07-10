@@ -164,7 +164,7 @@ export default {
           spoimg.src = data.spotify.album_art_url;
           sposong.innerText = data.spotify.song;
           spoartist.innerText = data.spotify.artist;
-          spoalbum.innerText = data.spotify.album;
+          spoalbum.innerText = data.spotify.album.large_text;
           progress.style.width = playedPercentage + "%";
           played.innerText = millisToMinutesAndSeconds(diff);
           total.innerText = millisToMinutesAndSeconds(totalLength);
