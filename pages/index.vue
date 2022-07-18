@@ -5,7 +5,7 @@
       <div class="w-full">
         <img draggable="false" src="" class="rounded-full mx-auto mb-4 profile bg-gray-500 animate-pulse" @load="imgloaded('logo')" width="128" height="128" alt="" id="logo"/>
         <h1 class="text-4xl font-bold text-center mb-4" id="username">arasemr12</h1>
-        <p class="text-center">Hello, I'm Emrah, I'm interested in coding. Technologies I use:</p>
+        <p class="text-center">Hello, I'm arasemr12, I'm interested in coding. Technologies I use:</p>
         <div class="flex flex-row items-center justify-center flex-wrap mt-4" id="technologies">
           <div class="icon">
             <span class="text-xs rounded-full">Node.js</span>
@@ -56,10 +56,6 @@
           <div class="icon">
             <span class="text-xs rounded-full">Twitter</span>
             <a href="https://twitter.com/arasemr1234" target="_blank"><i class="fab fa-twitter fa-2x z-20"></i></a>
-          </div>
-          <div class="icon">
-            <span class="text-xs rounded-full">Instagram</span>
-            <a href="https://www.instagram.com/arasemr1234/" target="_blank"><i class="fab fa-instagram fa-2x z-20"></i></a>
           </div>
         </div>
       </div>
