@@ -4,19 +4,14 @@
 
 @layer components{
     *{
-        @apply box-border m-0 p-0;
+        @apply box-border m-0 p-0 border-0;
     }
 
-    html,body{
-        @apply bg-gray-900 text-gray-100 w-full h-full;
-    }
-
-    #__nuxt{
-        @apply w-full h-full;
-    }
-    
+    html,
+    body,
+    #__nuxt,
     #__layout{
-        @apply w-full h-full;
+        @apply bg-gray-900 text-white w-full h-full flex flex-col items-center;
     }
 
     .profile:hover{
@@ -71,6 +66,23 @@
 
     *:focus{
         @apply border-0 outline-none text-blue-500;
+    }
+
+    @keyframes load {
+        from{
+            transform: rotate(0deg);
+        }
+
+        to{
+            transform: rotate(360deg);
+        }
+    }
+
+    .loading{
+        @apply p-4 rounded-full border-b-2 border-l-2 border-gray-300 absolute;
+        animation-name: load;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
     }
 
 }
