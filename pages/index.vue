@@ -1,5 +1,14 @@
 <template>
   <div class="w-full h-full flex flex-col items-center justify-center">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNZ9C6R1H4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PNZ9C6R1H4');
+    </script>
     <div v-if="json" class="w-full lg:w-2/3 h-full flex flex-col items-center justify-center">
       <div class="bg-red-600 w-full rounded-full p-4 top-0 mb-8 absolute opacity-0 transition duration-1000" id="msg">Discord username copied!</div>
       <div class="w-full">
