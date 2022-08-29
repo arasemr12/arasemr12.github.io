@@ -13,7 +13,7 @@
       <div ref="msg" class="bg-green-100 text-green-600 w-full lg:w-2/3 rounded-full opacity-0 invisible duration-1000 py-2 px-2 absolute top-0">Discord username copied!</div>
       <div class="w-full">
         <img draggable="false" :src="'https://cdn.discordapp.com/avatars/'+json.data.discord_user.id+'/'+json.data.discord_user.avatar+'.gif'" class="rounded-full mx-auto mb-4 profile bg-gray-500 animate-pulse" @load="imgloaded('logo')" width="128" height="128" alt="My best logo." ref="logo"/>
-        <h1 class="text-4xl font-bold text-center mb-4 flex flex-row items-center w-full justify-center">{{json.data.discord_user.username}}<span :class="`w-6 h-6 ml-2 rounded-full ${colors[json.data.discord_status]} block`"></span></h1>
+        <h1 class="text-4xl font-bold text-center mb-4 flex flex-row items-center w-full justify-center">{{json.data.discord_user.username}}<span :class="`duration-500 w-6 h-6 ml-2 rounded-full ${colors[json.data.discord_status]} block`"></span></h1>
         <p class="text-center">Hello, I'm arasemr12, I'm interested in coding. Technologies I use:</p>
         <div class="flex flex-row items-center justify-center flex-wrap mt-4 gap-8" id="technologies">
           <icon title="Node.js" icon="fab fa-node-js"/>
