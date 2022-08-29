@@ -89,7 +89,7 @@ export default {
   methods: {
     async update(){
       try {
-        let res = await fetch('https://api.lanyard.rest/v1/users/441221465019514881');
+        let res = await fetch('/api/@me');
         let json = await res.json();
 
         this.json = json;

@@ -45,5 +45,9 @@ export default {
         autoprefixer: {},
       },
     },
-  }
+  },
+
+  serverMiddleware: [
+    {path:'/api/',handler:"~/api/index.js"},
+  ]
 }
