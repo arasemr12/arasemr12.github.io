@@ -1,6 +1,8 @@
 <template>
   <div v-if="json" class="w-full h-full">
-    <div ref="msg" class="bg-green-100 text-green-600 w-full lg:w-2/3 rounded-full opacity-0 invisible duration-1000 py-2 px-2 absolute top-0 z-50">Discord username copied!</div>
+    <div class="w-full flex flex-col items-center">
+      <div ref="msg" class="bg-green-100 text-green-600 w-full lg:w-2/3 rounded-full opacity-0 invisible duration-1000 py-2 px-2 absolute top-0 z-50">Discord username copied!</div>
+    </div>
     <navbar/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNZ9C6R1H4"></script>
