@@ -4,6 +4,7 @@ const axios = require('axios');
 const app = express();
 
 let data = {};
+let posts = [];
 
 function makerequest(){
     axios.get("https://api.lanyard.rest/v1/users/441221465019514881").then((res) => {
@@ -16,8 +17,27 @@ function makerequest(){
 
 makerequest();
 
-app.get('/@me',(req,res) => {
+function getposts(){
+    axios.get("http://45.136.4.58/api/users/630f56fe987b585ab69609c7").then((res) => {
+        posts = res.data;
+        setTimeout(() => {
+            getposts();
+        }, 10000);
+    }).catch((err) => {
+        setTimeout(() => {
+            getposts();
+        }, 10000);
+    });
+};
+
+getposts();
+
+app.get('/me',(req,res) => {
     res.json(data);
+});
+
+app.get('/posts',(req,res) => {
+    res.json(posts);
 });
 
 module.exports = app;

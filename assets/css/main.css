@@ -4,14 +4,14 @@
 
 @layer components{
     *{
-        @apply box-border m-0 p-0 border-0 outline-none;
+        @apply box-border m-0 p-0 border-0 outline-none scroll-smooth;
     }
 
     html,
     body,
     #__nuxt,
     #__layout{
-        @apply bg-gray-900 text-white w-full h-full flex flex-col items-center;
+        @apply bg-gray-900 text-white w-full h-full;
     }
 
     .profile:hover{
@@ -63,10 +63,6 @@
         @apply relative block h-1 bg-gray-100 rounded-full;
     }
 
-    *:focus{
-        @apply border-0 outline-none text-blue-500;
-    }
-
     @keyframes load {
         0%{
             transform: rotate(0deg);
@@ -80,6 +76,22 @@
     .loading{
         @apply p-4 rounded-full border-b-2 border-l-2 border-gray-300 absolute;
         animation: load 1s linear 0s infinite;
+    }
+
+    ::-webkit-scrollbar {
+        @apply hidden;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 
 }
