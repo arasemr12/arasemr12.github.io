@@ -4,94 +4,24 @@
 
 @layer components{
     *{
-        @apply box-border m-0 p-0 border-0 outline-none scroll-smooth;
+        @apply box-border p-0 m-0 border-0 outline-none;
     }
 
     html,
     body,
-    #__nuxt,
-    #__layout{
-        @apply bg-gray-900 text-white w-full h-full;
+    #__nuxt{
+        @apply w-full h-full bg-gray-900 text-white;
     }
 
-    .profile:hover{
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
-    }
-
-    .icon{
-        @apply flex flex-col items-center justify-center duration-300;
-    }
-
-    .icon i{
-        @apply text-gray-400;
-    }
-
-    .icon:hover i{
-        @apply text-gray-100;
-    }
-
-    .icon *{
-        @apply duration-300;
-    }
-
-    .icon span{
-        @apply absolute opacity-0 invisible -translate-y-6 py-1 px-2 bg-gray-700;
-    }
-
-    .icon:hover span{
-        @apply opacity-100 visible -translate-y-8;
-    }
-
-    .icon:hover i{
-        @apply -translate-y-2;
+    #__nuxt{
+        @apply flex flex-col items-center;
     }
 
     .hr{
-        @apply w-full h-1 mt-6 mb-6 bg-gray-500 rounded-full;
+        @apply w-full h-[1px] bg-gray-400 rounded-full opacity-50;
     }
 
-    .progress{
-        @apply relative block h-1 w-full bg-gray-400 rounded-full;
+    a{
+        @apply opacity-50 hover:opacity-90 duration-300;
     }
-
-    .progressin{
-        @apply relative block h-1 bg-gray-100 rounded-full;
-    }
-
-    @keyframes load {
-        0%{
-            transform: rotate(0deg);
-        }
-
-        100%{
-            transform: rotate(360deg);
-        }
-    }
-
-    .loading{
-        @apply p-4 rounded-full border-b-2 border-l-2 border-gray-300 absolute;
-        animation: load 1s linear 0s infinite;
-    }
-
-    ::-webkit-scrollbar {
-        @apply hidden;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-
 }
