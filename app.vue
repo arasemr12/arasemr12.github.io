@@ -65,6 +65,7 @@ export default {
     async update(){
       let res = await useFetch("/api/user");
       this.data = res.data.value.user;
+      if(!res.data.value.success || !res.data.value.user || !this.data.listening_to_spotify) return;
       this.timestamps.start = this.ms(Date.now() - this.data.spotify.timestamps.start);
       this.timestamps.end = this.ms(this.data.spotify.timestamps.end - this.data.spotify.timestamps.start);
     },
