@@ -35,12 +35,12 @@
     </div>
     <div class="absolute top-0 bottom-0 w-full h-full overflow-hidden">
       <video ref="video" class="min-w-full min-h-full w-auto h-auto absolute top-1/2 left-1/2 object-cover blur-md" style="transform: translate(-50%,-50%);" autoplay muted loop>
-        <source src="./parkour.mp4" type="video/mp4">
+        <source src="/parkour.mp4" type="video/mp4">
       </video>
     </div>
   </div>
-  <div v-else>
-    loading..
+  <div class="w-full h-full flex items-center justify-center" v-else>
+    <span class="w-10 h-10 block border-2 border-gray-400 border-t-2 border-t-gray-600 rounded-full animate-spin"></span>
   </div>
 </template>
 
