@@ -77,7 +77,6 @@ export default {
     }
   },
   created(){
-    this.update();
     setInterval(this.update, 1000);
   }
 }
