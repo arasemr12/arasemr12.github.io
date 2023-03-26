@@ -7,6 +7,7 @@ export default async () => {
 
     setInterval(async() => {
         let res = await axios.get('https://api.lanyard.rest/v1/users/441221465019514881').catch(() => {});
+        if(!res.data || !res.data.data) return;
         globalThis.user = res.data.data;
     }, 1000);
     

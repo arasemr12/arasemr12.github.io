@@ -63,7 +63,8 @@ export default {
   },
   methods:{
     async update(){
-      let res = await useFetch("/api/user");
+      let res = await useFetch("/api/user").catch(() => {});
+      if(!res.data || !res.data.value || !res.data.value.user) return;
       this.data = res.data.value.user;
       if(!res.data.value.success || !res.data.value.user || !this.data.listening_to_spotify) return;
       this.timestamps.start = this.ms(Date.now() - this.data.spotify.timestamps.start);
