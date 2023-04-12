@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  *{
+    @apply p-0 m-0 box-border outline-none border-0;
+  }
+
+  html,
+  body,
+  #root,
+  #root > div{
+    @apply w-full h-full text-white bg-gray-900 select-none;
+  }
+
+  .bg{
+    background: url("https://media.tenor.com/bMmFuMzGV08AAAAC/apo-bomb-turk-ocalan-army.gif");
+  }
+
+  .skill{
+    @apply py-2 px-4 bg-gray-800 rounded;
+  }
+
+  .hr{
+    @apply w-full block h-[1px] bg-gray-200 rounded-full;
+  }
+}
