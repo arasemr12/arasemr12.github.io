@@ -19,7 +19,7 @@ function Index() {
     let json = await res.json();
     json = json.data;
     if(!json.discord_user.avatar) setImageUrl(`https://cdn.discordapp.com/embed/avatars/${json.discord_user.discriminator.charAt(3)}.png`)
-    else setImageUrl(`https://cdn.discordapp.com/avatars/${json.discord_user.id}/${json.discord_user.avatar}.gif`);
+    else setImageUrl(`https://cdn.discordapp.com/avatars/${json.discord_user.id}/${json.discord_user.avatar}.png`);
     if(!json.spotify) return setSpotify({listening:false});
 
     let start = json.spotify.timestamps.start;
