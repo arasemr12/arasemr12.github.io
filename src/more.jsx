@@ -1,31 +1,16 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import LoadingBar from "react-top-loading-bar";
 import { Link } from "react-router-dom";
 
 function More() {
-  let [imageUrl, setImageUrl] = useState("");
-  let [repos, setRepos] = useState([]);
+  let user = useSelector(state => state.user);
+  let repos = user.repos;
+  user = user.user;
 
-  async function getImageUrl(){
-    let res = await fetch("https://api.lanyard.rest/v1/users/441221465019514881");
-    let json = await res.json();
-    json = json.data;
-    if(!json.discord_user.avatar) return setImageUrl(`https://cdn.discordapp.com/embed/avatars/${json.discord_user.discriminator.charAt(3)}.png`)
-    setImageUrl(`https://cdn.discordapp.com/avatars/${json.discord_user.id}/${json.discord_user.avatar}.png`);
-  }
-
-  async function getGithubRepos(){
-    let res = await fetch("https://api.github.com/users/arasemr12/repos?type=owner");
-    let json = await res.json();
-    setRepos(json);
-  }
-
-  useEffect(() => {
-    getImageUrl();
-    getGithubRepos();
-  },[]);
-  
   return (
     <div onContextMenu={(e) => e.preventDefault()} className="w-full h-full flex flex-col items-center gap-5 p-4">
+      <LoadingBar progress={100}/>
         <div className="w-full lg:w-2/3 flex flex-col">
             <span className="text-2xl mb-2">Who I am?</span>
             <span>I am a self-taught web/desktop developer. I am also learning game/os development.</span>
