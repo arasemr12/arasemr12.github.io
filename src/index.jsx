@@ -6,25 +6,21 @@ import LoadingBar from "react-top-loading-bar";
 function Index() {
   const user = useSelector((e) => e.user).user;
   const loading = useSelector((e) => e.user).loading;
-
-  let [imageUrl, setImageUrl] = useState("");
-  let [spotify, setSpotify] = useState({
-    listening:false
-  });
   
   if(loading || !user) return (
     <div className="fixed flex items-center justify-center w-full h-full z-50">
       <span className="block w-10 h-10 border-[1px] border-gray-600 border-t-gray-400 rounded-full animate-spin z-50"></span>
     </div>
-  )
+  );
   
   return (
     <div onContextMenu={(e) => e.preventDefault()} className="w-full h-full flex flex-col items-center justify-center gap-5">
       <LoadingBar progress={100}/>
-      <img className="rounded-full animate-bounce" width={128} draggable={false} src={user.imageurl} alt="" />
+      <img className="rounded-full profile" width={128} draggable={false} src={user.imageurl} alt="" />
       <div className="w-full flex flex-col items-center text-center">
         <h1 className="text-2xl font-bold">arasemr12</h1>
-        <span className="text-gray-400">Self taught web & desktop developer</span>
+        <span className="text-gray-300">Self taught web & desktop developer</span>
+        <span className="text-xs text-gray-400">arasemr1234@protonmail.com</span>
       </div>
       <span className="text-center">I'm a self taught web/desktop developer. I'm also learning os/game development.</span>
       {user.listening_to_spotify && (
