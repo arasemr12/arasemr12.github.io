@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Loaduser from "./loadUser";
+import Loaduser from "./Loaduser";
 import Index from ".";
 import More from "./more";
 
