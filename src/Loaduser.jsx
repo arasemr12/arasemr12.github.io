@@ -31,8 +31,10 @@ function Loaduser(){
             
             if(data.spotify){
                 let start = data.spotify.timestamps.start;
-                data.spotify.timestamps.start = msToSec(Date.now()-data.spotify.timestamps.start);
-                data.spotify.timestamps.end = msToSec(data.spotify.timestamps.end-start);
+                let end = data.spotify.timestamps.end;
+                data.spotify.timestamps.start = msToSec(Date.now()-start);
+                data.spotify.timestamps.end = msToSec(end-start);
+                data.spotify.timestamps.played = ((Date.now()-start) / (end-start))*100;
             }
 
             dispatch(setUser({
