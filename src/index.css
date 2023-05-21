@@ -29,8 +29,25 @@
     }
   }
 
+  @keyframes other {
+    0%{
+      @apply opacity-0;
+      transform: scale(1.5);
+    }
+
+    100%{
+      @apply opacity-100;
+      transform: scale(1);
+    }
+  }
+
   .anim{
-    animation: start 1s linear 0s 1;
+    animation: start 0.3s linear 0s 1;
+    @apply duration-300;
+  }
+
+  .other_anim{
+    animation: other 0.3s linear 0s 1;
     @apply duration-300;
   }
 

@@ -40,7 +40,7 @@ function Index() {
           </div>
           <span className="w-full h-1 block bg-gray-400 rounded-full">
             <span style={{
-              width:`${user.spotify.timestamps.played.toFixed(0)}%`
+              width:`${user.spotify.timestamps.played}%`
             }} className={`h-1 block bg-white rounded-full duration-300`}></span>
           </span>
           <div className="flex flex-row items-center w-full justify-between">
