@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Back from "./components/back";
+import Back from "./components/Back";
 
 function More() {
   let user = useSelector(state => state.user);
