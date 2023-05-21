@@ -14,7 +14,7 @@ function Index() {
   );
   
   return (
-    <div onContextMenu={(e) => e.preventDefault()} className="lg:w-2/3 lg:h-2/3 w-full h-full anim border-[1px] border-gray-700 rounded-lg p-4 flex flex-col items-center justify-center gap-5">
+    <div className="lg:w-2/3 lg:h-2/3 w-full h-full anim border-[1px] border-gray-700 rounded-lg p-4 flex flex-col items-center justify-center gap-5">
       <img className="rounded-full profile" width={128} draggable={false} src={user.imageurl} alt="" />
       <div className="w-full flex flex-col items-center text-center">
         <h1 className="text-2xl font-bold">arasemr12</h1>
@@ -22,8 +22,8 @@ function Index() {
         <span className="text-xs text-gray-400">arasemr1234@protonmail.com</span>
       </div>
       <div className="w-full flex flex-row items-center justify-center gap-5">
-        <a href="https://github.com/arasemr12" target="_blank"><i class="fa-brands fa-github fa-2x ic"></i></a>
-        <Link to="/more"><i class="fa-solid fa-circle-info fa-2x ic"></i></Link>
+        <a href="https://github.com/arasemr12" target="_blank"><i className="fa-brands fa-github fa-2x ic"></i></a>
+        <Link to="/more"><i className="fa-solid fa-circle-info fa-2x ic"></i></Link>
       </div>
       {user.listening_to_spotify && (
         <div className="flex flex-col w-full items-center bg-gradient-to-tr from-purple-600 to-blue-400 text-green-100 py-2 px-4 rounded-lg gap-1">
