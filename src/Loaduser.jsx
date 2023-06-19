@@ -25,7 +25,7 @@ function Loaduser(){
 
             data = data.data;
 
-            if(!data.discord_user.avatar) data.imageurl = `https://cdn.discordapp.com/embed/avatars/${data.discord_user.discriminator.charAt(3)}.png`;
+            if(!data.discord_user.avatar) data.imageurl = `https://cdn.discordapp.com/embed/avatars/1.png`;
             else data.imageurl = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png`;
 
             
