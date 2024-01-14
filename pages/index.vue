@@ -38,6 +38,7 @@ onMounted(() => {
 
 <template>
     <div v-if="data" class="w-full h-full overflow-auto">
+        <div class="b"></div>
         <div class="w-full h-full flex items-center justify-center">
             <div class="lg:w-2/3 w-full h-full flex flex-col items-center justify-center pb-12">
                 <div class="w-full h-full flex flex-col lg:flex-row items-center lg:justify-between justify-center">

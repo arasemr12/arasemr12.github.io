@@ -20,4 +20,35 @@
     ::-webkit-scrollbar-thumb{
         @apply bg-gray-700 hover:bg-gray-600 rounded-full;
     }
+
+    @keyframes a {
+        0%{
+            opacity: 100%;
+            visibility: visible;
+        }
+
+        100%{
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    @keyframes b {
+        0%{
+            filter: blur(10px);
+        }
+
+        100%{
+            filter: blur(0);
+        }
+    }
+
+    .b{
+        animation: a 1s linear 0s 1 normal forwards;
+        @apply w-full h-full fixed top-0 left-0 bg-black z-50;
+    }
+
+    body{
+        animation: b 1s linear 0s 1 normal forwards;
+    }
 }
