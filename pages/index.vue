@@ -34,14 +34,34 @@ onMounted(() => {
     setInterval(get, 5000);
 });
 
+const notifVisible = ref(false);
+const notif = ref("");
+
+const sendNotification = (text) => {
+    notifVisible.value = true;
+    notif.value = text;
+
+    setTimeout(() => {
+        notifVisible.value = false;
+    }, 3000);
+};
+
+const copy = (text) => {
+    navigator.clipboard.writeText(text);
+    sendNotification(`${text} copied!`);
+};
+
 </script>
 
 <template>
     <div v-if="data" class="w-full h-full overflow-auto">
         <div class="b"></div>
+        <div @click="notifVisible = !notifVisible" :class="`z-50 fixed shadow-xl top-5 lg:w-1/2 left-1/2 -translate-x-1/2 w-full bg-gray-800 py-2 px-4 rounded-full duration-300 border-[1px] border-gray-700 ${notifVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`">
+            <span>{{ notif }}</span>
+        </div>
         <div class="w-full h-full flex items-center justify-center">
             <div class="lg:w-2/3 w-full h-full flex flex-col items-center justify-center pb-12">
-                <div class="w-full h-full flex flex-col lg:flex-row items-center lg:justify-between justify-center">
+                <div class="w-full h-full rounded-full flex flex-col lg:flex-row items-center lg:justify-between justify-center">
                     <div class="flex flex-col w-full items-center lg:items-start">
                         <img src="https://cdn.discordapp.com/embed/avatars/1.png" width="128" draggable="false" class="rounded-full mb-4 lg:hidden" alt="">
                         <div class="flex flex-row items-center gap-3">
@@ -63,7 +83,7 @@ onMounted(() => {
                         </div>
                     </div>
                     <div class="hidden lg:flex flex-col">
-                        <img src="https://cdn.discordapp.com/embed/avatars/1.png" width="128" draggable="false" class="rounded-full" alt="">
+                        <img src="https://cdn.discordapp.com/embed/avatars/1.png" width="128" draggable="false" class="rounded-full hover:scale-110 duration-300" alt="">
                     </div>
                 </div>
                 <a href="#about">
@@ -74,7 +94,7 @@ onMounted(() => {
         <div id="about" class="w-full h-full flex items-center justify-center">
             <div class="lg:w-2/3 w-full h-full flex flex-col items-center justify-center gap-3 p-4">
                 <span>Hi, I'm Emrah. I started software when I was about 10 years old. I am 15 years old now. I study at an Anatolian high school. I'm interested in video games, guitar and research. My main field is web development, I also develop desktop programs. I am open to job offers. You can reach me via e-mail.</span>
-                <div class="flex flex-row items-center gap-1">
+                <div @click="copy('18jZo8m4r6mSyozJb2MfQrH9TG24kPQY4i')" class="flex flex-row items-center gap-1 cursor-pointer">
                     <i class="fa-brands fa-bitcoin text-yellow-400 fa-2x"></i>
                     <span>18jZo8m4r6mSyozJb2MfQrH9TG24kPQY4i</span>
                 </div>

@@ -4,7 +4,7 @@
 
 @layer components{
     *{
-        @apply scroll-smooth;
+        @apply scroll-smooth select-none;
     }
 
     html,
