@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    *{
+        @apply scroll-smooth;
+    }
+
+    html,
+    body,
+    #__nuxt{
+        @apply w-full h-full bg-gray-900 text-white;
+    }
+
+    ::-webkit-scrollbar{
+        @apply w-2 bg-gray-800 rounded-full;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        @apply bg-gray-700 hover:bg-gray-600 rounded-full;
+    }
+}
