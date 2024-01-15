@@ -19,6 +19,8 @@ const links = ref([
     }
 ]);
 
+const logo = ref("");
+
 const data = ref({});
 
 let get = async() => {
@@ -32,16 +34,27 @@ get();
 onMounted(() => {
     if(!process.client) return;
     setInterval(get, 5000);
+
+    /*setInterval(() => {
+        logo.value.style["border-width"] = `${Math.random()*10}px`;
+    }, 200);*/
 });
 
 const notifVisible = ref(false);
 const notif = ref("");
+const notifTimeout = ref("");
 
 const sendNotification = (text) => {
+    try {
+        clearTimeout(notifTimeout.value);
+    } catch (error) {
+        
+    }
+
     notifVisible.value = true;
     notif.value = text;
 
-    setTimeout(() => {
+    notifTimeout.value = setTimeout(() => {
         notifVisible.value = false;
     }, 3000);
 };
@@ -56,7 +69,7 @@ const copy = (text) => {
 <template>
     <div v-if="data" class="w-full h-full overflow-auto">
         <div class="b"></div>
-        <div @click="notifVisible = !notifVisible" :class="`z-50 fixed shadow-xl top-5 lg:w-1/2 left-1/2 -translate-x-1/2 w-full bg-gray-800 py-2 px-4 rounded-full duration-300 border-[1px] border-gray-700 ${notifVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`">
+        <div @click="notifVisible = !notifVisible" :class="`cursor-pointer z-50 fixed shadow-xl top-5 lg:w-1/2 left-1/2 -translate-x-1/2 w-full bg-gray-800 hover:scale-105 py-2 px-4 rounded-full duration-300 border-[1px] border-gray-600 ${notifVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`">
             <span>{{ notif }}</span>
         </div>
         <div class="w-full h-full flex items-center justify-center">
@@ -70,20 +83,24 @@ const copy = (text) => {
                             </a>
                         </div>
                         <h1 class="text-4xl font-bold">arasemr12</h1>
-                        <a href="mailto:arasemr1234@protonmail.com" target="_blank" class="text-gray-400">arasemr1234@protonmail.com</a>
-                        <div class="relative w-full flex flex-row items-start lg:justify-start justify-center">
+                        <span @click="copy('arasemr1234@protonmail.com')" class="text-gray-400 hover:text-gray-200 duration-300 cursor-pointer">arasemr1234@protonmail.com</span>
+                        <div v-if="data.activities" class="relative w-full flex flex-row items-start lg:justify-start justify-center">
                             <a :class="`text-green-400 text-xs flex flex-row items-center gap-1 duration-300 absolute ${data.spotify ? 'opacity-100 visible' : 'opacity-0 invisible'}`" :href="`https://open.spotify.com/track/${data?.spotify?.track_id ?? ''}`" target="_blank">
                                 <i class="fa-brands fa-spotify"></i>
                                 <span>Listening to {{ data?.spotify?.song ?? "" }} from {{ data?.spotify?.artist ?? "" }}</span>
                             </a>
-                            <div :class="`text-yellow-400 text-xs flex flex-row items-center gap-1 duration-300 absolute ${data.spotify ? 'opacity-0 invisible' : 'opacity-100 visible'}`">
+                            <a :class="`text-purple-400 text-xs flex flex-row items-center gap-1 duration-300 absolute ${!data.spotify && data.activities.filter((e) => e.name == 'Code').length > 0 ? 'opacity-100 visible' : 'opacity-0 invisible'}`" :href="`https://open.spotify.com/track/${data?.spotify?.track_id ?? ''}`" target="_blank">
+                                <i class="fa-solid fa-code"></i>
+                                <span>{{ data.activities?.filter((e) => e.name == 'Code')[0]?.state ?? '' }} {{ data.activities.filter((e) => e.name == 'Code')[0]?.details ?? '' }}</span>
+                            </a>
+                            <div :class="`text-yellow-400 text-xs flex flex-row items-center gap-1 duration-300 absolute ${!data.spotify && data.activities.filter((e) => e.name == 'Code').length < 1 ? 'opacity-100 visible' : 'opacity-0 invisible'}`">
                                 <i class="fa-solid fa-moon"></i>
-                                <span>Hang out</span>
+                                <span>Idling</span>
                             </div>
                         </div>
                     </div>
                     <div class="hidden lg:flex flex-col">
-                        <img src="https://cdn.discordapp.com/embed/avatars/1.png" width="128" draggable="false" class="rounded-full hover:scale-110 duration-300" alt="">
+                        <img ref="logo" src="https://cdn.discordapp.com/embed/avatars/1.png" width="128" draggable="false" class="rounded-full hover:scale-110 duration-300 border-purple-600" alt="">
                     </div>
                 </div>
                 <a href="#about">

@@ -4,7 +4,7 @@
 
 @layer components{
     *{
-        @apply scroll-smooth select-none;
+        @apply scroll-smooth;
     }
 
     html,
@@ -19,6 +19,10 @@
 
     ::-webkit-scrollbar-thumb{
         @apply bg-gray-700 hover:bg-gray-600 rounded-full;
+    }
+
+    ::selection{
+        @apply bg-purple-600 text-purple-200;
     }
 
     @keyframes a {
