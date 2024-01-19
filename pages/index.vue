@@ -44,8 +44,8 @@ const techs = ref([
         logo:"fa-brands fa-golang fa-2x"
     },
     {
-        name:"Go",
-        logo:"fa-brands fa-golang fa-2x"
+        name:"Java",
+        logo:"fa-brands fa-java fa-2x"
     },
 ]);
 
@@ -120,11 +120,11 @@ const move = (e) => {
 const down = (e) => {
     pos3.value = e.clientX;
     pos4.value = e.clientY;
-    navbar.value.onmousemove = move;
+    document.onmousemove = move;
 };
 
 const up = () => {
-    navbar.value.onmousemove = null;
+    document.onmousemove = null;
 };
 </script>
 
