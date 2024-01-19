@@ -34,13 +34,26 @@ const techs = ref([
     {
         name:"Javascript",
         logo:"fa-brands fa-js fa-2x"
-    }
+    },
+    {
+        name:"python",
+        logo:"fa-brands fa-python fa-2x"
+    },
+    {
+        name:"Go",
+        logo:"fa-brands fa-golang fa-2x"
+    },
+    {
+        name:"Go",
+        logo:"fa-brands fa-golang fa-2x"
+    },
 ]);
 
 const logo = ref("");
 
 const data = ref({});
 const techsIn = ref("");
+const navbar = ref("");
 
 let get = async() => {
     let res = await useFetch("https://api.lanyard.rest/v1/users/441221465019514881");
@@ -89,15 +102,44 @@ const copy = (text) => {
     navigator.clipboard.writeText(text);
     sendNotification(`${text} copied!`);
 };
+
+let pos1 = ref(0);
+let pos2 = ref(0);
+let pos3 = ref(0);
+let pos4 = ref(0);
+
+const move = (e) => {
+    pos1.value = pos3.value - e.clientX;
+    pos2.value = pos4.value - e.clientY;
+    pos3.value = e.clientX;
+    pos4.value = e.clientY;
+    navbar.value.style.top = `${navbar.value.offsetTop - pos2.value}px`;
+    navbar.value.style.left = `${navbar.value.offsetLeft - pos1.value}px`;
+};
+
+const down = (e) => {
+    pos3.value = e.clientX;
+    pos4.value = e.clientY;
+    navbar.value.onmousemove = move;
+};
+
+const up = () => {
+    navbar.value.onmousemove = null;
+};
 </script>
 
 <template>
     <div v-if="data" class="w-full h-full overflow-auto">
         <div class="b"></div>
+        <div @mousedown.prevent="down" @mouseup.prevent="up" ref="navbar" class="z-40 absolute top-2 left-1/2 -translate-x-1/2 bg-gray-800/50 border-2 border-gray-700 backdrop-blur-sm lg:w-2/3 w-full p-2 rounded-full flex flex-row items-center justify-center gap-3 cursor-move">
+            <a class="py-2 px-3 bg-gray-800 rounded-full" href="#home"><i class="fa-solid fa-house"></i></a>
+            <a class="py-2 px-3 bg-gray-800 rounded-full" href="#about"><i class="fa-solid fa-address-card"></i></a>
+            <a class="py-2 px-3 bg-gray-800 rounded-full" href="#techs"><i class="fa-solid fa-microchip"></i></a>
+        </div>
         <div @click="notifVisible = !notifVisible" :class="`cursor-pointer z-50 fixed shadow-xl top-5 lg:w-1/2 left-1/2 -translate-x-1/2 w-full bg-gray-800 hover:scale-105 py-2 px-4 rounded-full duration-300 border-[1px] border-gray-600 ${notifVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`">
             <span>{{ notif }}</span>
         </div>
-        <div class="w-full h-full flex items-center justify-center">
+        <div id="home" class="w-full h-full flex items-center justify-center">
             <div class="lg:w-2/3 w-full h-full flex flex-col items-center justify-center pb-12">
                 <div class="w-full h-full rounded-full flex flex-col lg:flex-row items-center lg:justify-between justify-center">
                     <div class="flex flex-col w-full items-center lg:items-start">
@@ -108,6 +150,7 @@ const copy = (text) => {
                             </a>
                         </div>
                         <h1 class="text-4xl font-bold">arasemr12</h1>
+                        <span class="text-xs">こんにちは、荒瀬です！</span>
                         <span @click="copy('arasemr1234@protonmail.com')" class="text-gray-400 hover:text-gray-200 duration-300 cursor-pointer">arasemr1234@protonmail.com</span>
                         <div v-if="data.activities" class="relative w-full flex flex-row items-start lg:justify-start justify-center">
                             <a :class="`text-green-400 text-xs flex flex-row items-center gap-1 duration-300 absolute ${data.spotify ? 'opacity-100 visible' : 'opacity-0 invisible'}`" :href="`https://open.spotify.com/track/${data?.spotify?.track_id ?? ''}`" target="_blank">
@@ -143,13 +186,13 @@ const copy = (text) => {
             </div>
         </div>
         <div id="techs" class="w-full h-full flex items-center justify-center">
-            <div class="lg:w-2/3 lg:h-2/3 w-full h-full flex flex-col items-center justify-center gap-3 p-4">
+            <div class="lg:w-2/3 lg:h-4/5 w-full h-full flex flex-col items-center justify-center gap-3 p-4">
                 <div @click="reTech" class="flex flex-row items-center gap-1 cursor-pointer">
                     <span class="text-2xl font-semibold select-none">Technologies I use</span>
                     <i class="fa-solid fa-arrows-rotate text-gray-400 hover:text-white hover:rotate-180 duration-300"></i>
                 </div>
-                <div ref="techsIn" class="relative w-full h-full flex flex-col items-center gap-3 bg-gray-800/50">
-                    <div v-for="tech in techs" :style="{top:`${tech.y}px`,left:`${tech.x}px`}" class="w-full lg:w-1/4 select-none bg-gray-800 hover:bg-gray-700 border-2 border-gray-700 p-4 rounded-lg flex flex-col items-center hover:scale-110 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:-rotate-[1.5deg] duration-300 lg:absolute cursor-move tech">
+                <div ref="techsIn" class="bg-gradient-to-tr relative w-full h-full flex lg:flex-row lg:flex-wrap flex-col items-center justify-between p-4 gap-3 bg-gray-800/50 rounded-lg overflow-auto">
+                    <div v-for="tech in techs" :style="{top:`${tech.y}px`,left:`${tech.x}px`}" class="blur-[0.5px] hover:blur-0 w-full lg:w-1/4 select-none bg-gray-800 backdrop-blur-xl hover:bg-gray-700 border-2 border-gray-700 p-4 rounded-lg flex flex-col items-center hover:scale-110 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:-rotate-[1.5deg] duration-300 cursor-move tech">
                         <i :class="`${tech.logo} text-gray-400`"></i>
                         <span>{{ tech.name }}</span>
                     </div>
