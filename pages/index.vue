@@ -1,5 +1,4 @@
 <script setup>
-
 const links = ref([
     {
         link:"https://www.instagram.com/arasemr1234",
@@ -19,9 +18,29 @@ const links = ref([
     }
 ]);
 
+const techs = ref([
+    {
+        name:"Node",
+        logo:"fa-brands fa-node fa-2x"
+    },
+    {
+        name:"Vue",
+        logo:"fa-brands fa-vuejs fa-2x"
+    },
+    {
+        name:"C/C++",
+        logo:"fa-solid fa-c fa-2x"
+    },
+    {
+        name:"Javascript",
+        logo:"fa-brands fa-js fa-2x"
+    }
+]);
+
 const logo = ref("");
 
 const data = ref({});
+const techsIn = ref("");
 
 let get = async() => {
     let res = await useFetch("https://api.lanyard.rest/v1/users/441221465019514881");
@@ -31,13 +50,20 @@ let get = async() => {
 
 get();
 
+const reTech = () => {
+    let tt = document.getElementsByClassName("tech").item(0);
+
+    techs.value.forEach((t) => {
+        t.x = Math.random()*(techsIn.value?.clientWidth-tt?.clientWidth);
+        t.y = Math.random()*(techsIn.value?.clientHeight-tt?.clientHeight);
+    });
+};
+
 onMounted(() => {
     if(!process.client) return;
     setInterval(get, 5000);
 
-    /*setInterval(() => {
-        logo.value.style["border-width"] = `${Math.random()*10}px`;
-    }, 200);*/
+    reTech();
 });
 
 const notifVisible = ref(false);
@@ -63,7 +89,6 @@ const copy = (text) => {
     navigator.clipboard.writeText(text);
     sendNotification(`${text} copied!`);
 };
-
 </script>
 
 <template>
@@ -115,7 +140,20 @@ const copy = (text) => {
                     <i class="fa-brands fa-bitcoin text-yellow-400 fa-2x"></i>
                     <span>18jZo8m4r6mSyozJb2MfQrH9TG24kPQY4i</span>
                 </div>
-                <span>My Features: Javascript, Typescript, Python, Nuxt-Vue, React, C/C++, Tailwind, Go, Java</span>
+            </div>
+        </div>
+        <div id="techs" class="w-full h-full flex items-center justify-center">
+            <div class="lg:w-2/3 lg:h-2/3 w-full h-full flex flex-col items-center justify-center gap-3 p-4">
+                <div @click="reTech" class="flex flex-row items-center gap-1 cursor-pointer">
+                    <span class="text-2xl font-semibold select-none">Technologies I use</span>
+                    <i class="fa-solid fa-arrows-rotate text-gray-400 hover:text-white hover:rotate-180 duration-300"></i>
+                </div>
+                <div ref="techsIn" class="relative w-full h-full flex flex-col items-center gap-3 bg-gray-800/50">
+                    <div v-for="tech in techs" :style="{top:`${tech.y}px`,left:`${tech.x}px`}" class="w-full lg:w-1/4 select-none bg-gray-800 hover:bg-gray-700 border-2 border-gray-700 p-4 rounded-lg flex flex-col items-center hover:scale-110 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:-rotate-[1.5deg] duration-300 lg:absolute cursor-move tech">
+                        <i :class="`${tech.logo} text-gray-400`"></i>
+                        <span>{{ tech.name }}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
